@@ -1,0 +1,2 @@
+DA SUA: Dữ liệu JSON được đóng gói trong src/geometry/defaultModel.json, ứng dụng tự dự phòng nếu /models/... trả HTTP 404.
+Tải toàn bộ thư mục src và public lên GitHub đúng repository đang kết nối Vercel. Deploy lại.

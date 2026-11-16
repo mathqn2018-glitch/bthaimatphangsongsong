@@ -1,3 +1,4 @@
+import bundledModel from './geometry/defaultModel.json';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Box,
@@ -119,13 +120,14 @@ export default function App() {
     setLoadError(null);
     setGeometry(null);
     try {
-      const response = await fetch(MODEL_URL, {
-        headers: { Accept: 'application/json' },
-      });
-      if (!response.ok) {
-        throw new Error(`Không thể tải tệp dữ liệu hình học (HTTP ${response.status}).`);
+      let response: Response | null = null;
+      try {
+        response = await fetch(MODEL_URL, { headers: { Accept: 'application/json' } });
+      } catch {
+        // Nếu mạng hoặc đường dẫn dữ liệu lỗi, sử dụng dữ liệu đã đóng gói.
       }
-      const rawJson: unknown = await response.json();
+      // Dữ liệu đóng gói cùng ứng dụng: vẫn chạy khi đường dẫn /models bị 404.
+      const rawJson: unknown = response?.ok ? await response.json() : bundledModel;
       const parsed = parseGeometryJSON(rawJson);
       const report = verifyPyramidMath(parsed);
       if (!report.allPassed) {
