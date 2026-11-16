@@ -1,0 +1,119 @@
+{
+  "format": "HH-3D-JSON",
+  "version": "1.1",
+  "id": "Hinh_chop_SABCD_trung_diem_MNP",
+  "title": "Hình chóp S.ABCD và tam giác MNP",
+  "description": "Hình chóp S.ABCD có đáy ABCD là hình bình hành (C = B + D - A); M, N, P lần lượt là trung điểm của SA, SB, SC.",
+  "coordinateSystem": "Y_UP_RIGHT_HANDED",
+  "vertices": [
+    {
+      "id": "S",
+      "label": "S",
+      "position": [-0.6, 3.4, -0.1],
+      "role": "apex"
+    },
+    {
+      "id": "A",
+      "label": "A",
+      "position": [-2.2, 0.0, -1.2],
+      "role": "base"
+    },
+    {
+      "id": "B",
+      "label": "B",
+      "position": [1.6, 0.0, -1.2],
+      "role": "base"
+    },
+    {
+      "id": "C",
+      "label": "C",
+      "role": "base",
+      "derivedParallelogram": ["A", "B", "D"]
+    },
+    {
+      "id": "D",
+      "label": "D",
+      "position": [-1.4, 0.0, 1.4],
+      "role": "base"
+    },
+    {
+      "id": "M",
+      "label": "M",
+      "role": "midpoint",
+      "ofEdge": ["S", "A"]
+    },
+    {
+      "id": "N",
+      "label": "N",
+      "role": "midpoint",
+      "ofEdge": ["S", "B"]
+    },
+    {
+      "id": "P",
+      "label": "P",
+      "role": "midpoint",
+      "ofEdge": ["S", "C"]
+    }
+  ],
+  "edges": [
+    { "id": "AB", "from": "A", "to": "B", "group": "base" },
+    { "id": "BC", "from": "B", "to": "C", "group": "base" },
+    { "id": "CD", "from": "C", "to": "D", "group": "base" },
+    { "id": "DA", "from": "D", "to": "A", "group": "base" },
+    { "id": "SA", "from": "S", "to": "A", "group": "lateral" },
+    { "id": "SB", "from": "S", "to": "B", "group": "lateral" },
+    { "id": "SC", "from": "S", "to": "C", "group": "lateral" },
+    { "id": "SD", "from": "S", "to": "D", "group": "lateral" },
+    { "id": "MN", "from": "M", "to": "N", "group": "section" },
+    { "id": "NP", "from": "N", "to": "P", "group": "section" },
+    { "id": "PM", "from": "P", "to": "M", "group": "section" }
+  ],
+  "faces": [
+    {
+      "id": "base_ABCD",
+      "vertices": ["A", "B", "C", "D"],
+      "kind": "solid_face",
+      "group": "base",
+      "label": "Mặt đáy ABCD"
+    },
+    {
+      "id": "face_SAB",
+      "vertices": ["S", "B", "A"],
+      "kind": "solid_face",
+      "group": "lateral",
+      "label": "Mặt bên SAB"
+    },
+    {
+      "id": "face_SBC",
+      "vertices": ["S", "C", "B"],
+      "kind": "solid_face",
+      "group": "lateral",
+      "label": "Mặt bên SBC"
+    },
+    {
+      "id": "face_SCD",
+      "vertices": ["S", "D", "C"],
+      "kind": "solid_face",
+      "group": "lateral",
+      "label": "Mặt bên SCD"
+    },
+    {
+      "id": "face_SDA",
+      "vertices": ["S", "A", "D"],
+      "kind": "solid_face",
+      "group": "lateral",
+      "label": "Mặt bên SDA"
+    },
+    {
+      "id": "plane_MNP",
+      "vertices": ["M", "N", "P"],
+      "kind": "auxiliary_plane",
+      "group": "section",
+      "label": "Tam giác MNP"
+    }
+  ],
+  "camera": {
+    "position": [2.7, 3.5, 6.4],
+    "target": [0.05, 1.1, 0.05]
+  }
+}
